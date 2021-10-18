@@ -1,0 +1,1 @@
+python3 sentry/main.py & python3 buttler/main.py
