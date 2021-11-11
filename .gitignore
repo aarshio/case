@@ -1,1 +1,33 @@
-.venv
+dev/
+sentry/env.py
+
+# Philo specific
+.vs
+.venv/
+.tox/
+.*metadata_cache.pickle
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+.cache/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# pyenv
+.python-version
+
+# request_lib_upgradepytest
+.pytest_cache
+
+# IDE stuff
+.idea
+.vscode/
+.mypy_cache/
+.env
+
+# OSX stuff
+.DS_Store
+

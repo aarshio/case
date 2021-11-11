@@ -1,1 +1,30 @@
+dev
+
+# Build/Test Files
+.coverage
+.mypy_cache
+.pytest_cache
 .venv
+build
+dist
+*.egg-info
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+.cache/
+
+# No need for git
+.git
+.git*
+.github
+
+# IDE stuff
+.idea/
+.vscode/
+
+# OSX stuff
+.DS_Store
+
+# Drone config
+.drone.yml
