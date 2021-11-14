@@ -10,9 +10,9 @@ async def save_trade_history(db):
         trades = statement.extract('Trade', parseNumbers=True)
         for trade in trades:
             data = vars(trade)
-            data['case_timestamp'] = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.%f%z")
             key = {"_id": data['tradeID']}
             db.history.update(key, data, upsert=True)
+        db.fresh.update({"_id": "history"}, {"last_run":datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.%f%z")}, upsert=True)
         print(f'Success! Updated {len(trades)} trades')
     except Exception as e:
         print(e)

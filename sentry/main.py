@@ -16,12 +16,12 @@ ib = IB()
 try:
     client = MongoClient(MONGO_URI)
     db = client.kipp
-    db_trades_histroy = client.trades
+    db_trades = client.trades
     print("[S] DB connected")
 except:
     print("[S] Failed to connect to db")
 
-asyncio.run(save_trade_history(db_trades_histroy))
+asyncio.run(save_trade_history(db_trades))
 
 # jobs that require ib connection
 
