@@ -3,9 +3,10 @@ from datetime import datetime
 from env import FLEX_QUERY_TOKEN, FLEX_QUERY_ID
 from ib_insync import FlexReport
 
-async def save_trade_history(db):
+async def save_trade_history(*args):
     try:
-        print('Running trade history job')
+        db = args[0]
+        print('Running trade history job...')
         statement = FlexReport(token=FLEX_QUERY_TOKEN, queryId=FLEX_QUERY_ID, path=None)
         trades = statement.extract('Trade', parseNumbers=True)
         for trade in trades:

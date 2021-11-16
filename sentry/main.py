@@ -12,6 +12,7 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 nest_asyncio.apply()
 
 ib = IB()
+scheduler = AsyncIOScheduler()
 
 try:
     client = MongoClient(MONGO_URI)
@@ -21,7 +22,8 @@ try:
 except:
     print("[S] Failed to connect to db")
 
-asyncio.run(save_trade_history(db_trades))
+# asyncio.run(save_trade_history(db_trades))
+scheduler.add_job(save_trade_history, "interval", [db_trades], hours=4)
 
 # jobs that require ib connection
 
@@ -30,7 +32,6 @@ try:
 except:
     print("[S] TWS port not found")
 
-scheduler = AsyncIOScheduler()
 
 if ib.isConnected():
     print("[S] IB active")
