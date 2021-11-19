@@ -1,3 +1,4 @@
+from datetime import datetime
 from jobs.positions import save_open_positions
 from jobs.trade_history import save_trade_history
 
@@ -22,8 +23,8 @@ try:
 except:
     print("[S] Failed to connect to db")
 
-# asyncio.run(save_trade_history(db_trades))
-scheduler.add_job(save_trade_history, "interval", [db_trades], hours=4)
+scheduler.add_job(save_trade_history, "interval", [
+                  db_trades], next_run_time=datetime.now(), hours=4, max_instances=1)
 
 # jobs that require ib connection
 
